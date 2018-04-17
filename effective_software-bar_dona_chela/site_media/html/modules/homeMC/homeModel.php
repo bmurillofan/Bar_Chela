@@ -127,25 +127,29 @@ require_once '../../../../core/db_class/db_connect_abstract_class/connect_mysql_
                $data = mysqli_fetch_assoc($this->get_results_from_query($query));
               
 
-               //abrimos sesion
-               session_start();
-               if ($data['id_rol'] == '1') {
                
+
+               if ($data['id_rol'] == '1') {
+
+                  //abrimos sesion
+                  session_start();
                   $_SESSION["admin"] = array("estado"=>true,"nombre"=>$usuario,"tipo"=>"admin");
                   
-                   header("Location: ../grow_more_seed_dashboard/dashboard.php");
+                  header("Location: ../dashboard-crudMC/crudController.php");
 
                }elseif ($data['id_rol'] == '2') {
-                
+
+                  session_start();
                   $_SESSION["mesero"] = array("estado"=>true,"nombre"=>$usuario,"tipo"=>"mesero");
               
-                  header("Location: ../municipios/controller_municipios2.php");
+                  //header("Location: ../dashboard-crudMC/crudController.php");
                
                }elseif ($data['id_rol'] == '3') {
                   
+                  session_start();
                   $_SESSION["caja"] = array("estado"=>true,"nombre"=>$usuario,"tipo"=>"caja");
 
-                   header("Location: ../municipios/controller_municipios3.php");
+                  header("Location: ../municipios/controller_municipios3.php");
 
                }else{
 
