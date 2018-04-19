@@ -12,8 +12,8 @@ abstract class Conectar {
     //Variables de conexion
     private static $db_host = 'localhost';
     private static $db_user = 'root';
-    private static $db_pass = '';
-    protected $db_name = 'grow_more_seed_db';
+    private static $db_pass = 'toor';
+    protected $db_name = 'u948420309_esbdc';
 
 
     /*

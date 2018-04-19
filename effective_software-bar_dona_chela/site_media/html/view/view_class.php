@@ -54,12 +54,12 @@
               *  $remplazar_token = array(0 => "token",1 => "token");
               */         
               
-              $newHTML = str_replace($remplazar_token[$i], $arrayData[$i], $htmlTemplate);
+              $htmlTemplate = str_replace($remplazar_token[$i], $arrayData[$i], $htmlTemplate);
               
              } 
 
              //retorna nuevo html por metodo, listo para imprimir
-             return $newHTML;
+             return $htmlTemplate;
          }  
 
     }

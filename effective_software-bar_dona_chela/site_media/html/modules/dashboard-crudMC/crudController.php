@@ -45,8 +45,39 @@
     $obj_view = create_obj_view();
     $obj_model = create_obj_model();
 
+    if (empty($_POST)) {
+      print( $obj_view->get_template('dashboard','dashboard'));
 
-    print( $obj_view->get_template('dashboard','dashboard'));
+    }else{
+
+      if (!isset($_POST["nombre"]) && $_POST["username"] != "" && $_POST["id_usuarios"] == "" ) {
+        
+          if ($obj_model->verificar_existencia($_POST['username'])) {
+        
+                  $array = $obj_model->get_info_user($_POST['username']);
+                  
+           
+             $arrayData = array(0 => 'placeholder="*****"',1 => 'xxx',2 => 'placeholder="*****"');
+
+             $remplazar_token = array(0 => 'readonly',1 => 'Usuarios',2 => 'readonly');
+             
+
+             print( $obj_view->get_temaplate_render_dinamic_data($obj_view->get_template('dashboard','dashboard'), $arrayData, $remplazar_token));
+
+
+            }else{
+                 header("Location:./crudController.php");
+            }  
+
+      }else{
+         //Crear nuevo
+      }
+
+
+      
+    }
+    
+
 
   }
 

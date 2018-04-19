@@ -11,7 +11,7 @@
   * Action: Importar documentos
   * Parametros:  Ruta de documento require('ruta')
   */
-
+  error_reporting(0);
   require_once('./homeModel.php');
   require_once('../../view/view_class.php');
 

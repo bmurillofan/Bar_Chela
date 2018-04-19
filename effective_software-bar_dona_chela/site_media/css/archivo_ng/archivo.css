@@ -1,0 +1,21 @@
+#myStyle{
+	font-color:black;
+}
+
+
+//Fondo
+body {
+
+        background-image: url(../../site_media/img/imagenes/home.jpg);
+
+        background-position: center center;
+
+        background-repeat: no-repeat;
+
+        background-attachment: fixed;
+
+        background-size: cover;
+
+        background-color: #66999;
+
+}
