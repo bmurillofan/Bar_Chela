@@ -143,6 +143,9 @@
       </ol>
       <!-- Icon Cards-->
       <div class="row">
+         <div class="col-xl-12 col-sm-12 mb-12 mb-3">
+           <div class="d-inline p-2 bg-primary text-white">Mensaje!!</div>
+         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
           <div class="card text-white bg-primary o-hidden h-100">
             <div class="card-body">
@@ -152,7 +155,7 @@
               <div class="mr-5">Administrar Usuarios!</div>
             </div>
              <div class="card-footer text-white clearfix small z-1">
-              <center><input class="form-check-input" type="checkbox" ng-model="checked"></center>
+              <center><input class="form-check-input" type="checkbox" ng-model="checked.opt1"></center>
               <br>
              </div>
           </div>
@@ -209,67 +212,167 @@
           </div>
     </div>
    
-  
-    <div class="row" ng-if="checked" >
-         <div class="col-md-12">
+<!--**********************************************************  Usuarios **********************************************************-->
+<div class="row" ng-if="checked.opt1" >
+      
+      <div class="col-md-12">
             <div class="card mb-3">
                   <div class="card-header">
-                  <CENTER><i class="fa fa-users"></i>Usuarios</div></CENTER>
+                  <i class="fa fa-users"></i>Usuarios  - <em>{{title.usuarios}}</em></div>
+            </div>
+             <div class="container">
+                <div class="row">
+                  <div class="col-md-1 col-sm-12">
+                     Consulta:<br><input class="form-check-input ml-4" type="checkbox" ng-model="checked.optC"><br>
                   </div>
-              <div class="container">
-                 <form action="#" method="post">
-                    <div class="form-group">
-                        <div class="row">
-
-
-                            <div class="offset-md-10 col-md-2">
-                               ID:
-                               <input type="text" class="form-control" ng-model="id_usuarios" name="id_usuarios" readonly placeholder="ID">
-                            </div>
-                          
-                            <div class="col-md-6">
-                              Nombre:<br>
-                              <input type="text" required class="form-control" ng-model="name" name="nombre" placeholder="Nombre" ng-disabled="desactivar == true">
-                              <br>
-                              Apellido:<br>
-                              <input type="text" required  class="form-control" name="apellido" ng-model="apellido" placeholder="Apellido" ng-disabled="desactivar == true">
-                              <br>
-                            </div>
-
-                              <div class="col-md-6">
-                                Cedula:<br>
-                                <input type="text" required class="form-control" name="cedula" ng-model="cedula" placeholder="C.C" ng-disabled="desactivar == true">
-                                <br>
-                                Nombre Usuario:<br>
-                                <input type="text" required class="form-control" name="username" ng-model="username" placeholder="Usuario">
-                                <br>
-                              </div>
-                        
-                              <div class="col-md-12">
-                                Constraseña:<br>
-                                <input type="password" required class="form-control" name="password" ng-model="password" placeholder="Contraseña" ng-disabled="desactivar == true">
-                                 <br>
-                                <button type="submit" ng-disabled="username==null" class="btn btn-success">Ejecutar</button>
-                              </div>  
-                      </div>   
+                  <div class="col-md-1 col-sm-12">
+                     Editar:<br><input class="form-check-input ml-4" type="checkbox"  ng-model="checked.optE"><br>
                   </div>
-               </form>
-
-                   <div class="form-group">
-                      <div class="row">
-                       <div class="col-md-6">
-
-                                <button ng-click="crear()"  ng-init="bto.cargar = false" class="btn btn-primary">Cargar</button>
-
-                    </div>
+                  <div class="col-md-1 col-sm-12">
+                     Eliminar:<br><input class="form-check-input ml-4" type="checkbox" ng-model="checked.optDE"><br>
                   </div>
+                
                 </div>
+                <br>
+            </div>
+ 
+            
+              <div class="container" ng-if="checked.optC">
+                <form action="#" method="post">
+                        <div class="form-group">
+                            <div class="row">
+
+                                      <div class="offset-md-10 col-md-2">
+                                         ID:
+                                         <input type="text" class="form-control" ng-model="id_usuarios" name="id_usuarios" readonly placeholder="ID">
+                                      </div>
+                                    
+                                      <div class="col-md-6">
+                                          Nombre:<br>
+                                          <input type="text" required class="form-control" ng-model="name" name="nombre" placeholder="Nombre" ng-disabled="bto.nombre==false">
+                                          <br>
+                                          Apellido:<br>
+                                          <input type="text" required  class="form-control" name="apellido" ng-model="apellido" placeholder="Apellido" ng-disabled="bto.apellido==false">
+                                          <br>
+                                      </div>
+
+                                      <div class="col-md-6">
+                                          Cedula:<br>
+                                          <input type="text" required class="form-control" name="cedula" ng-model="cedula" placeholder="C.C" ng-disabled="bto.cedula==false">
+                                          <br>
+                                          Nombre Usuario:<br>
+                                          <input type="text" required class="form-control" name="username" ng-model="username" placeholder="Usuario" ng-disabled="bto.username==false">
+                                          <br>
+                                      </div>
+                                  
+                                      <div class="col-md-12">
+                                          Constraseña:<br>
+                                          <input type="password" required class="form-control" name="password" ng-model="password" placeholder="Contraseña" ng-disabled="bto.password==false">
+                                           <br>
+                                          <button type="submit" ng-disabled="bto.ejecutar == false" name="form_type" value="formulario_usuario" class="btn btn-success">Ejecutar</button>
+
+                                      </div>  
+
+                            </div>   
+
+
+                      </div>
+                </form>
+
+                          <div class="row">
+                             <div class="col-md-6">
+                                      <button ng-click="crear()" ng-disabled="bto.cargar == false" class="btn btn-primary">Cargar</button>
+
+                             </div>
+                          </div>
+                  
            </div>
+
+
+           <!--1-->
+
+           <div class="container" ng-if="checked.optE">
+                <form action="#" method="post">
+                        <div class="form-group">
+                            <div class="row">
+
+                                      <div class="offset-md-10 col-md-2">
+                                         ID:
+                                         <input type="text"  required class="form-control" name="id_usuarios" placeholder="ID">
+                                      </div>
+                                    
+                                      <div class="col-md-6">
+                                          Nombre:<br>
+                                          <input type="text" required class="form-control"  name="nombre" placeholder="Nombre">
+                                          <br>
+                                          Apellido:<br>
+                                          <input type="text" required  class="form-control" name="apellido"  placeholder="Apellido" >
+                                          <br>
+                                      </div>
+
+                                      <div class="col-md-6">
+                                          Cedula:<br>
+                                          <input type="text" required class="form-control" name="cedula" placeholder="C.C">
+                                          <br>
+                                          Constraseña:<br>
+                                          <input type="password" required class="form-control" name="password" placeholder="Contraseña">
+                                           <br>
+                                      </div>
+                                  
+                                      <div class="col-md-12">
+                                          
+                                          <button type="submit" name="form_type" value="formulario_usuario_editar" class="btn btn-success">Editar</button>
+
+                                      </div>  
+
+                            </div>   
+
+                            
+                      </div>
+                </form>
+
+           </div>
+           <!--1-->
+
+           <!--1-->
+
+           <div class="container" ng-if="checked.optDE">
+                <form action="#" method="post">
+                        <div class="form-group">
+                            <div class="row">
+
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <label class="input-group-text" for="inputGroupSelect01">usuarios</label>
+                                        </div>
+                                        <select name="id_usuarios" class="custom-select" id="inputGroupSelect01">
+                                          <option selected>Seleccionar..</option>
+                                          <option  value="1">Sin carga</option>
+                                        </select>
+                                      </div>
+                                    
+                                      <div class="col-md-12">
+                                          
+                                          <button type="submit" name="form_type" value="formulario_usuario_eliminar" class="btn btn-success">Eliminar</button>
+
+                                      </div>  
+
+                            </div>   
+
+                            
+                      </div>
+                </form>
+
+           </div>
+           <!--1-->
+
          </div>
       </div>
-    </div>
- 
 
+</div>
+<!--********************************************************** FIN Usuarios **********************************************************-->
+
+    <br>
     <br>
     <br>
   

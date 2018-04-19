@@ -1,12 +1,6 @@
 <?php
 
-  /******************************************
-  *            Modelo de home        	     	*
-  *              Home Model         		    *
-  ******************************************/
 
-
-//Require Clase abstracta de conexion
 require_once '../../../../core/db_class/db_connect_abstract_class/connect_mysql_php.php';
 
 
@@ -26,8 +20,8 @@ require_once '../../../../core/db_class/db_connect_abstract_class/connect_mysql_
         {
             $this->db_name = 'u948420309_esbdc';
         }
-        
-        
+
+
          function verificar_existencia($usuarioR){
           //Se carga los $_POST
           $usuario = $usuarioR;
@@ -50,40 +44,16 @@ require_once '../../../../core/db_class/db_connect_abstract_class/connect_mysql_
               }
 
               if ($token_user == 1) {
-                $respuesta = true;
+                    $respuesta = true;
               }
 
               return $respuesta;
           }
 
 
-          function get_info_user($usuarioR){
-
-                $query = 'SELECT * FROM u948420309_esbdc.usuarios WHERE username = "'.$usuarioR.'"';
-                $data = mysqli_fetch_assoc($this->get_results_from_query($query));
-                return $data;
-
-          }
-
-
-
-          function actualizar_user($id_usuarios , $nombre , $apellido , $cedula , $password){
-                $query = "Update u948420309_esbdc.usuarios Set nombre='".$nombre."', apellido = '".$apellido."',cedula='".$cedula."',password='".$password."' Where id_usuarios='".$id_usuarios."'";
+          function crear_user($nombre , $apellido , $cedula ,$username, $password, $id_rol){
+                $query = 'INSERT INTO u948420309_esbdc.usuarios (nombre, apellido, cedula, username, password,id_rol) VALUES ("'.$nombre.'","'.$apellido.'","'.$cedula.'","'.$username.'","'.$password.'","'.$id_rol.'")';
                   $this->execute_single_query($query);
-          }
-
-
-          function obtener_lista_usuarios(){
-
-          $query = 'SELECT id_usuarios,username FROM usuarios';
-          $data = mysqli_fetch_all($this->get_results_from_query($query));
-          return $data;
-        
-        }
-
-          function delete_user($id_usuarios){
-                $query = "DELETE FROM u948420309_esbdc.usuarios WHERE id_usuarios='".$id_usuarios."'";
-                 $this->execute_single_query($query);
           }
 
 

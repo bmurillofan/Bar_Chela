@@ -12,7 +12,7 @@ abstract class Conectar {
     //Variables de conexion
     private static $db_host = 'localhost';
     private static $db_user = 'root';
-    private static $db_pass = 'toor';
+    private static $db_pass = '';
     protected $db_name = 'u948420309_esbdc';
 
 

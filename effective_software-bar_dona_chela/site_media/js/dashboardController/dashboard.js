@@ -11,6 +11,9 @@
 
 		//*************************( Contenido del controller )******************************** 
 			//$scope.variable = "variable";
+			$scope.title = {
+				usuarios: "Activado"
+			},
 		//**************************************************************************************
 
 
@@ -20,9 +23,24 @@
 
 		//*************************************************************************************
 
+		$scope.bto = {
+			nombre: false,
+			apellido: false,
+			cedula: false,
+			username: false,
+			password: false,
+			cargar: true,
+			ejecutar: false
+		},
+
 		$scope.crear = function(){
-			$scope.desactivar = true;
+			$scope.bto.username = true;
+			$scope.bto.cargar = false;
+			$scope.bto.ejecutar = true;	
+			$scope.title.usuarios = "Cargando usuario..";
 		};
+
+
 
 
 
